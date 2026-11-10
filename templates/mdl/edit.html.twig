@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<title>Edit MDL</title>
+
+{% block body %}
+    <h1>Edit MDL</h1>
+
+    {{ include('mdl/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_m_d_l_index') }}">back to list</a>
+
+    {{ include('mdl/_delete_form.html.twig') }}
+{% endblock %}

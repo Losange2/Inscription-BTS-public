@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<title>New Commune</title>
+
+{% block body %}
+    <h1>Create new Commune</h1>
+
+    {{ include('commune/_form.html.twig') }}
+
+    <a href="{{ path('app_commune_index') }}">back to list</a>
+{% endblock %}
