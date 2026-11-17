@@ -8,9 +8,19 @@ sudo apt install git
 ```
 git clone https://github.com/Losange2/Inscription-BTS-public/tree/main
 ```
+
+# Une fois le git récupérer rentrez dans le dossier
+```
+cd Inscription-BTS-public/
+```
+
 # Puis mettez les droits sur les scripts
 ```
 sudo chmod +x installationdb.sh
 sudo chmod +x installationprojet.sh
 ```
-
+# Puis exécuter les scripts
+```
+sudo .\installationdb.sh
+sudo .\installationprojet.sh
+```
