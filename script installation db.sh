@@ -32,10 +32,8 @@ CREATE USER IF NOT EXISTS '$USER_DB'@'$IP' IDENTIFIED BY '$PASS';
 GRANT ALL PRIVILEGES ON \`$BASE\`.* TO '$USER_DB'@'$IP';
 FLUSH PRIVILEGES;
 EOF
+IPVM=$(hostname -I | awk '{print $1}')
 
 echo "Utilisateur $USER_DB créé avec accès à la base $BASE."
+echo "L'adresse IP de cette machine est : $IPVM"
 echo "Terminé !"
-
-
-
-
