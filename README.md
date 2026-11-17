@@ -16,8 +16,8 @@ cd Inscription-BTS-public/
 
 # Puis mettez les droits sur les scripts
 ```
-sudo chmod +x installationdb.sh
-sudo chmod +x installationprojet.sh
+chmod +x installationdb.sh
+chmod +x installationprojet.sh
 ```
 # Puis exécuter les scripts
 ```
