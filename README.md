@@ -21,6 +21,6 @@ sudo chmod +x installationprojet.sh
 ```
 # Puis exécuter les scripts
 ```
-sudo .\installationdb.sh
-sudo .\installationprojet.sh
+sudo ./installationdb.sh
+sudo ./installationprojet.sh
 ```
