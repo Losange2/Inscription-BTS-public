@@ -6,7 +6,7 @@ sudo apt install git
 ```
 ### Une fois git récupérez le github avec la commande si dessous
 ```
-git clone https://github.com/Losange2/Inscription-BTS-public/tree/main
+git clone https://github.com/Losange2/Inscription-BTS-public
 ```
 
 # Une fois le git récupérer rentrez dans le dossier
