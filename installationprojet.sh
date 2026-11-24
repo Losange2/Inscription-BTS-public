@@ -16,6 +16,7 @@ IP=$(hostname -I | awk '{print $1}')   # IP de cette machine (affichée à la fi
 read -p "Nom de l'utilisateur de la base de données : " USER_DB
 read -p "IP du serveur de base de données : " DB_HOST
 read -p "Nom de la base de données : " BASE
+BASE=${BASE:-Inscription}
 read -p "Port de la base de données [3306] : " PORT
 PORT=${PORT:-3306}
 read -s -p "Mot de passe de $USER_DB : " PASS
@@ -77,8 +78,7 @@ fi
 # ---------- Copie du projet ----------
 echo "==> Copie du projet dans $APP_DIR..."
 mkdir -p "$APP_DIR"
-rsync -a --delete --exclude='.git' --exclude='*.sh' --exclude='.env.local' --exclude='var' --exclude='vendor' "$DIR/" "$APP_DIR/"
-
+rsync -a --delete --exclude='/.git' --exclude='*.sh' --exclude='/.env.local' --exclude='/var' --exclude='/vendor' "$DIR/" "$APP_DIR/"
 # ---------- Configuration ----------
 echo "==> Configuration (.env.local)..."
 PASS_ENC=$(php -r 'echo rawurlencode($argv[1]);' -- "$PASS")
@@ -96,6 +96,10 @@ chown -R www-data:www-data "$APP_DIR"
 echo "==> Installation des dépendances (Composer)..."
 cd "$APP_DIR"
 runuser -u www-data -- env COMPOSER_HOME=/tmp/composer composer install --no-dev --optimize-autoloader --no-interaction
+
+echo "==> Assets (CSS/JS)..."
+runuser -u www-data -- php bin/console importmap:install
+runuser -u www-data -- php bin/console asset-map:compile
 
 echo "==> Migrations de la base..."
 runuser -u www-data -- php bin/console doctrine:migrations:migrate --no-interaction

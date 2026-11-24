@@ -19,7 +19,8 @@ echo "Configuration de l'utilisateur"
 
 
 BASE="Inscription"
-
+read -p "Nom de la base de données ($BASE): " BASE
+BASE=${BASE:-Inscription}
 read -p "Nom de l'utilisateur pour la base de données : " USER_DB
 read -p "IP dont l'utilisateur $USER_DB est autorisé à se connecter : " IP
 read -s -p "Mot de passe pour $USER_DB : " PASS
