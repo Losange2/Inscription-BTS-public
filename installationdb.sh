@@ -36,21 +36,6 @@ EOF
 
 
 echo "Utilisateur $USER_DB créé avec accès à la base $BASE."
-IPVM=$(hostname -I | awk '{print $1}')
-BIND=$(mariadb -N -B -e "SELECT @@bind_address;")
-PORT_DB=$(mariadb -N -B -e "SELECT @@port;")
-
-case "$BIND" in
-    127.0.0.1|localhost)
-        echo "MariaDB écoute uniquement en local ($BIND:$PORT_DB)."
-        echo "Pour un accès depuis une autre machine, mets bind-address = 0.0.0.0"
-        echo "dans /etc/mysql/mariadb.conf.d/50-server.cnf puis : systemctl restart mariadb"
-        ;;
-    0.0.0.0|'*'|::)
-        echo "IP du serveur MariaDB : $IPVM (port $PORT_DB)"
-        ;;
-    *)
-        echo "IP du serveur MariaDB : $BIND (port $PORT_DB)"
-        ;;
-esac
+IPVM=$(hostname -I | tr ' ' '\n' | grep '^192\.168\.56\.' | head -n1)
+echo "L'adresse IP de cette machine est : $IPVM"
 echo "Terminé !"
