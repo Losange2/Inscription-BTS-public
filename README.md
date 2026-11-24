@@ -2,7 +2,7 @@
 # Sur une seule VM 
 ## Installer git 
 ```
-apt-get install git
+sudo apt-get install git
 ```
 ## Récupérez le projet github
 ```
