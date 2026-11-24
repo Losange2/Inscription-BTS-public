@@ -103,7 +103,7 @@ runuser -u www-data -- php bin/console asset-map:compile
 
 echo "==> Migrations de la base..."
 runuser -u www-data -- php bin/console doctrine:migrations:migrate --no-interaction
-
+runuser -u www-data -- php -d memory_limit=256M bin/console app:import-communes --no-interaction
 echo "==> Cache de production..."
 runuser -u www-data -- php bin/console cache:clear
 chown -R www-data:www-data "$APP_DIR/var"
